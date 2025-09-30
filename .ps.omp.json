@@ -5,7 +5,8 @@
     "cyan": "#56B6C2",
     "blue": "#5FAAE8",
     "red": "#BF616A",
-    "pink": "#D0666F"
+    "pink": "#D0666F",
+    "yellow": "#E5C07B"
   },
   "secondary_prompt": {
     "template": "<p:green,transparent>➜  </> ",
@@ -49,7 +50,7 @@
             "fetch_status": true,
             "fetch_upstream_icon": true
           },
-          "template": " <p:blue>(</>{{ if .UpstreamURL }}{{ url .UpstreamIcon .UpstreamURL }} {{ end }}{{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }} \uf044 {{ .Working.String }}{{ end }}{{ if .Staging.Changed }} \uf046 {{ .Staging.String }}{{ end }}<p:blue>)</>",
+          "template": " <p:blue>(</>{{ .UpstreamIcon }}  {{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }} <p:yellow> {{ .Working.String }}</>{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }} <p:green> {{ .Staging.String }}</>{{ end }}{{ if gt .StashCount 0 }}  {{ .StashCount }}{{ end }}<p:blue>)</>",
           "foreground": "p:pink",
           "type": "git",
           "style": "plain"
